@@ -6,26 +6,59 @@
 /*   By: vicsanch <vicsanch@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 14:17:14 by vicsanch          #+#    #+#             */
-/*   Updated: 2026/10/09 21:27:34 by vicsanch         ###   ########.fr       */
+/*   Updated: 2026/10/10 13:50:46 by vicsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(char const *format, ...)
+static int	ft_process_conversion(char const *format, va_list *args, int *i)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (format[i])
+	count = 0;
+	if (format[*i + 1] == '%')
 	{
-		write(1, &format[i], 1);
-		i++;
+		write(1, "%", 1);
+		count = 1;
 	}
-	return (i);
+	else if (format[*i + 1] == 's')
+		count = ft_print_string(args);
+	else if (format[*i + 1] == 'c')
+		count = ft_print_char(args);
+	else
+		return (-1);
+	*i += 2;
+	return (count);
 }
 
-int main(void)
+static int	ft_process_format(char const *format, va_list *args, int *i)
 {
-	ft_printf("hola");
+	int	count;
+
+	count = 0;
+	if (format[*i] == '%' && format[*i + 1])
+	{
+		count = ft_process_conversion(format, args, i);
+		if (count >= 0)
+			return (count);
+	}
+	write(1, &format[*i], 1);
+	(*i)++;
+	return (1);
+}
+
+int	ft_printf(char const *format, ...)
+{
+	va_list	args;
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	va_start(args, format);
+	while (format[i])
+		count += ft_process_format(format, &args, &i);
+	va_end(args);
+	return (count);
 }
