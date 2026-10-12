@@ -6,7 +6,7 @@
 /*   By: vicsanch <vicsanch@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 14:17:14 by vicsanch          #+#    #+#             */
-/*   Updated: 2026/10/10 20:05:34 by vicsanch         ###   ########.fr       */
+/*   Updated: 2026/10/12 03:25:11 by vicsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	ft_process_conversion(char const *format, va_list *args, int *i)
 		count = ft_print_char(args);
 	else if (format[*i + 1] == 'd' || format[*i + 1] == 'i')
 		count = ft_print_number(args);
+	else if (format[*i + 1] == 'u')
+		count = ft_print_unsigned_int(args);
 	else
 		return (-1);
 	*i += 2;
