@@ -6,7 +6,7 @@
 /*   By: vicsanch <vicsanch@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/08 14:17:14 by vicsanch          #+#    #+#             */
-/*   Updated: 2026/10/12 03:25:11 by vicsanch         ###   ########.fr       */
+/*   Updated: 2026/10/13 19:28:25 by vicsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@ static int	ft_process_conversion(char const *format, va_list *args, int *i)
 
 	count = 0;
 	if (format[*i + 1] == '%')
-	{
-		write(1, "%", 1);
-		count = 1;
-	}
+		count = ft_print_percentage();
 	else if (format[*i + 1] == 's')
 		count = ft_print_string(args);
+	else if (format[*i + 1] == 'p')
+		count = ft_print_pointer(args);
 	else if (format[*i + 1] == 'c')
 		count = ft_print_char(args);
 	else if (format[*i + 1] == 'd' || format[*i + 1] == 'i')
 		count = ft_print_number(args);
 	else if (format[*i + 1] == 'u')
 		count = ft_print_unsigned_int(args);
+	else if (format[*i + 1] == 'x')
+		count = ft_print_hex(args, "0123456789abcdef");
+	else if (format[*i + 1] == 'X')
+		count = ft_print_hex(args, "0123456789ABCDEF");
 	else
 		return (-1);
 	*i += 2;
