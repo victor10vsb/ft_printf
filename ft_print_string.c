@@ -6,7 +6,7 @@
 /*   By: vicsanch <vicsanch@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 10:39:03 by vicsanch          #+#    #+#             */
-/*   Updated: 2026/10/13 17:19:27 by vicsanch         ###   ########.fr       */
+/*   Updated: 2026/10/13 19:26:40 by vicsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_print_string(va_list *args)
 	int		i;
 
 	str = va_arg(*args, char *);
+	if (!str)
+		str = "(null)";
 	i = 0;
 	while (str[i])
 	{
