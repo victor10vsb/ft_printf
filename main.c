@@ -154,5 +154,5 @@ int	main(void)
 	else
 		printf("Se han encontrado %d diferencias en los contadores.\n",
 			errors);
-	return (0);
+	return (errors != 0);
 }
