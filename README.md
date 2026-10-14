@@ -1,4 +1,4 @@
-*Este proyecto ha sido creado como parte del cirrículo de 42 por vicsanch.*
+*Este proyecto ha sido creado como parte del currículo de 42 por vicsanch.*
 
 ## Descripción
 
@@ -19,4 +19,4 @@ cc main.c -lftprintf -o test
 
 - `man 3 printf` y `man 3 stdarg`.
 - Enunciado del proyecto `ft_printf` de 42.
-- La IA ayudó a redactar este README y a preparar un main de pruebas que se entregará si el evualuador lo requiere, en particular su estructura y la selección de casos límite.
+- La IA ayudó a redactar este README y para la teoría.
