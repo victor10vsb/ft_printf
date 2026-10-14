@@ -6,7 +6,7 @@
 /*   By: vicsanch <vicsanch@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/13 18:11:31 by vicsanch          #+#    #+#             */
-/*   Updated: 2026/10/13 19:21:12 by vicsanch         ###   ########.fr       */
+/*   Updated: 2026/10/14 12:08:08 by vicsanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ int	ft_print_pointer(va_list *args)
 	int				count;
 
 	ptr = va_arg(*args, void *);
+	if (!ptr)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
 	num = (unsigned long)ptr;
 	write(1, "0x", 2);
 	count = 2;
