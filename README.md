@@ -19,4 +19,4 @@ cc main.c -lftprintf -o test
 
 - `man 3 printf` y `man 3 stdarg`.
 - Enunciado del proyecto `ft_printf` de 42.
-- La IA ayudó a redactar este README y para la teoría.
+- La IA me ayudó a comprender nuevos conceptos de teoría, a redactar este readme y a probar los casos límite en un main de pruebas que no se entrega.
